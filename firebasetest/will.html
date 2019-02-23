@@ -1,0 +1,83 @@
+<!DOCTYPE html>    
+<html>
+    <body>
+        <form method="POST" id="form">
+            <p>Name</p>
+            <input type="text" name="name">
+            <p>Email</p>
+            <input type="email" name="email">
+            <p>Password</p>
+            <input type="password" name="email">
+            <br>
+            <button id="register" type="submit">Register</button>
+            <button id="login" type="submit">Login</button>
+          </form> 
+    </body>
+</html>
+<script>
+src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+crossorigin="anonymous"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+<script>
+    var config = {
+        apiKey: "YOUR API KEY",
+        authDomain: "YOUR AUTH DOMAIN",
+        databaseURL: "YOUR DATABASEURL",
+        projectId: "YOUR PROJECT ID",
+        storageBucket: "YOUR STORAGE BUCKET",
+        messagingSenderId: "YOUR MESSAGIN SENDER ID"
+    };
+    firebase.initializeApp(config);
+    let user;
+    function welcomeAlert(){
+        alert(`Welcome ${user.displayName}!`);
+    }
+    $("#register").click((e) => {
+        e.preventDefault();
+        
+        let values = $('#form').serializeArray();
+        
+        firebase.auth().createUserWithEmailAndPassword(values[1].value, values[2].value)
+            .then(function (credentials) {
+                user = credentials.user;
+                user.updateProfile({ displayName: values[0].value }).then(function () {
+                    welcomeAlert();
+                });
+            })
+            .catch(function (error) {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                if (errorCode == 'auth/weak-password') {
+                    alert('The password is too weak.');
+                } else {
+                    alert(errorMessage);
+                }
+                console.log(error);
+            });
+    });
+    $("#login").click((e) => {
+        e.preventDefault();
+        let values = $('#form').serializeArray();
+        
+    
+        firebase.auth().signInWithEmailAndPassword(values[1].value, values[2].value)
+            .then(function (credentials) {
+                user = credentials.user;
+                user.updateProfile({ displayName: values[0].value }).then(function () {
+                    welcomeAlert();
+                });
+            })
+            .catch(function (error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                if (errorCode === 'auth/wrong-password') {
+                    alert('Wrong password.');
+                } else {
+                    alert(errorMessage);
+                }
+                console.log(error);
+            });
+    });
+</script>

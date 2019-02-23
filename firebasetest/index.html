@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <input id="txtEmail" type="email" placeholder="Email">
+        <input id="txtPassword" type="password" placeholder="Password">
+        <button id="btnLogin" class="btn btn-action">
+            Log in
+        </button>
+        <button id="btnSignUp" class="btn btn-secondary">
+            Sign Up
+        </button>
+        <button id="btnLogout" class-"btn btn-action hide">
+            Log out
+        </button>
+    </div>
+    
+    <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBXvAGzOwZyRHJya1VZ1lJPHhc-SB5s1To",
+        authDomain: "legalbillreview-5740d.firebaseapp.com",
+        databaseURL: "https://legalbillreview-5740d.firebaseio.com",
+        projectId: "legalbillreview-5740d",
+        storageBucket: "legalbillreview-5740d.appspot.com",
+        messagingSenderId: "588920881054"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script src="main.js"></script>
+
+</body>
+</html>

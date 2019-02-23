@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="login_div" class="main-div">
+        <input type="email" placeholder="Email" id="email_field" />
+        <input type="password" placeholder="Password" id="password_field" />
+        <button onclick="logIn()">Log in</button>
+    </div>
+    <div id="user_div" class="loggedin-div">
+        <p id="user_para">You're currently logged in</p>
+        <button onclick="logOut()">Logout</button>
+    </div>
+</body>
+<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBXvAGzOwZyRHJya1VZ1lJPHhc-SB5s1To",
+    authDomain: "legalbillreview-5740d.firebaseapp.com",
+    databaseURL: "https://legalbillreview-5740d.firebaseio.com",
+    projectId: "legalbillreview-5740d",
+    storageBucket: "legalbillreview-5740d.appspot.com",
+    messagingSenderId: "588920881054"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="script.js"></script>
+</html>
